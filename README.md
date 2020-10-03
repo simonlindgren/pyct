@@ -2,7 +2,7 @@
 
 `pyct` is a Python wrapper to retrieve data from the [CrowdTangle API](https://github.com/CrowdTangle/API).
 
-See [pyct-demo.ipynb](https://github.com/simonlindgren/PyCrowdTangle/blob/master/pyct-demo.ipynb) for tutorial. If you are not already familiar with CrowdTangle, you may have to read the rest of this README.
+See [pyct-demo.ipynb](https://github.com/simonlindgren/PyCrowdTangle/blob/master/pyct-demo.ipynb) for a tutorial. If you are not already familiar with CrowdTangle, you may have to read the rest of this README.
 
 ## Background to CrowdTangle
 
