@@ -2,7 +2,7 @@
 
 `pyct` is a Python wrapper to retrieve data from the [CrowdTangle API](https://github.com/CrowdTangle/API).
 
-See [pyct-demo.ipynb](https://github.com/simonlindgren/PyCrowdTangle/blob/master/pyct-demo.ipynb) for a tutorial. If you are not already familiar with CrowdTangle, you may have to read the rest of this README.
+See [pyct-demo.ipynb](https://github.com/simonlindgren/pyct/blob/main/pyct-demo.ipynb) for a tutorial. If you are not already familiar with CrowdTangle, you may have to read the rest of this README.
 
 ## Background to CrowdTangle
 
@@ -63,4 +63,4 @@ A powerful function which is website only, is the possibility to get historical 
 
 With the searches and lists set up, we can leave the web interface behind and use the API to retrieve data.
 
-See [pyct-demo.ipynb](https://github.com/simonlindgren/PyCrowdTangle/blob/master/pyct-demo.ipynb) for tutorial. 
+See [pyct-demo.ipynb](https://github.com/simonlindgren/pyct/blob/main/pyct-demo.ipynb) for tutorial. 
