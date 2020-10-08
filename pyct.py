@@ -225,6 +225,7 @@ def search(count,startdate,enddate,sort_by,pause,searchterms):
         "startDate": startdate,
         "endDate": enddate,
         "searchTerm": searchterms,
+        "language" : "sv",
         "token": api_token
     }
     
@@ -252,35 +253,40 @@ def search(count,startdate,enddate,sort_by,pause,searchterms):
     # iterate for more data
     breakdate = list(data_df.date)[-1]
     print("This took us back to --> " + str(breakdate))
-    print("Getting "  + str(count) + " more posts ...")
+    print("Trying to retrieve more posts ...")
         
     while True:
-        params = {
+        try:
+            params = {
             "count": count,
             "sortBy": sort_by,
             "startDate": startdate,
             "endDate": breakdate,
             "searchTerm": searchterms,
+            "language": "sv",
             "token": api_token
-        }
+            }
         
-        resp = requests.get(f'https://api.crowdtangle.com/posts/search', params=params)
-        
-        if resp.status_code != 200:
-            # This means something went wrong.
-            print('GET /posts/search/ {}'.format(resp.status_code))
+            resp = requests.get(f'https://api.crowdtangle.com/posts/search', params=params)
 
-        # process this batch of data
-        data = resp.json()
-        data_df = pd.json_normalize(data['result']['posts'])
-        data_df.to_csv('_data/pyct-data-search-' + str(breakdate) + '.csv', index=False)
-        breakdate = list(data_df.date)[-1]
-        print("Now at " + str(breakdate))
-        
-        # go easy
-        time.sleep(int(pause)) # sleep to avoid 429 error
+            if resp.status_code != 200:
+                # This means something went wrong.
+                print('GET /posts/search/ {}'.format(resp.status_code))
+
+            # process this batch of data
+            data = resp.json()
+            data_df = pd.json_normalize(data['result']['posts'])
+            data_df.to_csv('_data/pyct-data-search-' + str(breakdate) + '.csv', index=False)
+            breakdate = list(data_df.date)[-1]
+            print("Now at " + str(breakdate))
+
+            # go easy
+            time.sleep(int(pause)) # sleep to avoid 429 error
+        except:
+            print("No more data found.")
+            break
     
-    print("Done (" + str(len(data_df)) + " posts)")
+    print("Done.")
     
     
 def joinsearchcsvs():
